@@ -13,7 +13,9 @@ const Splash = () => {
                 <Text style={styles.title}>Here!</Text>
             </View>
 
-            <Button title="Sign up" />
+            <Button title="Sign up" onPress={function () {
+               console.log("clicked signup ")
+            } }/>
             <Pressable hitSlop={20}>
                 <Text style={styles.footerText}>Sign In</Text>
             </Pressable>

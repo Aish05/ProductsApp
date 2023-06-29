@@ -12,6 +12,7 @@ import {
   View,
 } from 'react-native';
 import Splash from './src/screens/splash';
+import Signup from './src/screens/auth/splash/signup';
 
 
 
@@ -21,7 +22,7 @@ function App(): JSX.Element {
   return (
     <SafeAreaView>
       <View>
-        <Splash/>
+        <Signup/>
       </View>
 
     </SafeAreaView>
