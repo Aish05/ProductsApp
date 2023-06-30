@@ -5,15 +5,20 @@ import { useState } from "react"
 const Input = ({ label, placeholder, isPassword }: { label: string, placeholder: string, isPassword: boolean }) => {
 
     const [isPasswordVisible, setPasswordVisible] = useState(false)
+    const onEyeToggle = () => {
+            setPasswordVisible(!isPasswordVisible)
+    }
+
     return (
         <View style={styles.container}>
             <Text style={styles.label}>{label}</Text>
             <View style={styles.inputContainer}>
                 <TextInput secureTextEntry={isPassword && !isPasswordVisible} placeholder={placeholder} style={styles.input} />
 
+                
                 {(isPassword ? 
-                    <Pressable>
-                        <Image source={require('../../assets/eye.png')} />
+                    <Pressable onPress={onEyeToggle}>
+                        <Image style={styles.eye} source={isPasswordVisible ? require('../../assets/eye.png') : require('../../assets/eye_closed.png')}/>
                     </Pressable>
                  : null)
                 }
