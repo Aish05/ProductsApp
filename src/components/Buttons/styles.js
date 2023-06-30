@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
         backgroundColor : "#4f63AC",
         paddingVertical : 16,
         paddingHorizontal: 8,
-        marginTop: 20,
         width: "100%"
     },
     text: {
