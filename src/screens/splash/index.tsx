@@ -1,10 +1,18 @@
-import React from "react";
+import React, { PropsWithRef } from "react";
 import { Image, Pressable, Text, View } from "react-native";
 import { styles } from "./styles";
 import Button from "../../components/Buttons";
 
-const Splash = () => {
-    return (
+
+const Splash = ({navigation}) => {
+    console.log("navigation: ", navigation)
+    const signUp = () => {
+        navigation.navigate("SingUp")
+    }
+    const signIn = () => {
+        navigation.navigate("SignIn")
+    }
+        return (
         <View style={styles.container}>
             <View style={styles.titleContainer}>
                 <Image style={styles.image} source={require('../../assets/splash.png')} />
@@ -13,11 +21,9 @@ const Splash = () => {
                 <Text style={styles.title}>Here!</Text>
             </View>
 
-            <Button title="Sign up" onPress={function () {
-               console.log("clicked signup ")
-            } }/>
+            <Button title="Sign up" onPress={signUp} style={undefined}/>
             <Pressable hitSlop={20}>
-                <Text style={styles.footerText}>Sign In</Text>
+                <Text style={styles.footerText} onPress={signIn}>Sign In</Text>
             </Pressable>
         </View>
 

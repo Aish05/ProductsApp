@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet, Text, TouchableOpacity } from "react-native"
 import styles from "./styles"
+import React from "react"
 
 
 const Button = ({title, onPress, style} : {title: string, onPress: () => any, style: any}) => {
@@ -12,4 +13,4 @@ const Button = ({title, onPress, style} : {title: string, onPress: () => any, st
     )
 }
 
-export default Button
+export default React.memo(Button)

@@ -5,9 +5,15 @@ import AuthHeader from "../../../../components/AuthHeader";
 import Input from "../../../../components/Input";
 import Checkbox from "../../../../components/Checkbox";
 import Button from "../../../../components/Buttons";
+import Separator from "../../../../components/Separator";
+import Googlelogin from "../../../../components/Googlelogin";
 
 const Signup = () => {
     const [checked, setChecked] = useState(false)
+
+    const onSignIn = () => {
+        console.log('sign in clicked')
+    }
 
     const checkChanged = () => {
         setChecked(prevChecked => !prevChecked);
@@ -32,6 +38,16 @@ const Signup = () => {
             <Button style={styles.button} title = "Sign Up" onPress={function() {
 
             }}/>
+
+            <Separator title= "Or sign up with"/>   
+
+            <Googlelogin onPress={function() {
+
+            }}/> 
+
+            <Text style={styles.footerText}>
+            Already have an account? <Text style={styles.footerLink} onPress={onSignIn}>Sign In</Text>
+            </Text>
 
         </View>
     )
