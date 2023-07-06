@@ -1,34 +1,60 @@
 import { Image, Pressable, Text, TouchableOpacity, View } from "react-native"
 import styles from "./styles"
-import App from "../../../App"
-import React from "react"
+import React, { useState } from "react"
+import Input from "../Input";
 
+export interface IAppHeaderProps {
+    title: string;
+    showLogout?: boolean;
+    showSearch?: boolean;
+    showBack?: boolean;
+    onLogout?: () => void;
+    onBackPressed?: () => void
+  }
 
-const AppHeader = (title: string, onBackPressed : ()=>{}, onLogout?: ()=>{}, showLogout?: boolean, showSearch?: boolean, showBack?: boolean) => {
+const AppHeader = ({
+   title,
+   showLogout,
+   showSearch,
+   showBack,
+   onLogout,
+   onBackPressed
+  }: IAppHeaderProps) => {
 
-    return (        
+    const [showSearchInput, setShowSearchInput] = useState(false)
+    const onSearchClicked = () => {
+        setShowSearchInput(s =>!s)
+    }
 
-        <View style={styles.container}>
+    return (  
+        <View>
+             <View style={styles.container}>
             {showBack ? (
                 <Pressable hitSlop={20} onPress={onBackPressed}>
-                    <Image style={styles.image} source={require('../../assets/back.png')} />
+                    <Image style={styles.icon} source={require('../../assets/back.png')} />
                 </Pressable>
 
             ) : showSearch ? (
-                <Pressable hitSlop={20} onPress={onBackPressed}>
-                    <Image style={styles.image} source={require('../../assets/search.png')} />
+                <Pressable hitSlop={20} onPress={onSearchClicked}>
+                    <Image style={styles.icon} source={require('../../assets/search.png')} />
                 </Pressable>
-            ) : null}
+            ) : <View style={styles.space} /> }
 
             <Text style={styles.title}>{title}</Text>
 
             {showLogout ? (
                 <Pressable hitSlop={20} onPress={onLogout}>
-                    <Image style={styles.image} source={require('../../assets/logout.png')} />
+                    <Image style={styles.icon} source={require('../../assets/logout.png')} />
                 </Pressable>
             )
-                : null}
+                : <View style={styles.space} />}
         </View>
+            {showSearchInput? (
+                <Input placeholder="Search Products" label="" isPassword={false} />
+            ) : null}
+
+        </View>      
+       
     )
 }
 

@@ -6,20 +6,25 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
         alignItems: "center",
-        marginBottom: 20
+        justifyContent: "space-between"
     },
-    image: {
-        width: 20,
-        height: 20
+    icon: {
+        width: 22,
+        height: 22
 
     },
     title: {
-        color: colors.blue,
-        fontSize: 26,
-        fontWeight: '500',
+        color: colors.black,
+        fontSize: 16,
+        fontWeight: 'bold',
         paddingHorizontal: 12
 
-    }
+    },
+    space: {
+        width: 22,
+        height: 22
+
+    },
 })
 
 export default styles
