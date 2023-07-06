@@ -7,12 +7,17 @@ import Checkbox from "../../../../components/Checkbox";
 import Button from "../../../../components/Buttons";
 import Separator from "../../../../components/Separator";
 import Googlelogin from "../../../../components/Googlelogin";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-const Signup = () => {
+const Signup = ({navigation}) => {
     const [checked, setChecked] = useState(false)
 
     const onSignIn = () => {
-        console.log('sign in clicked')
+        navigation.navigate("SignIn")
+    }
+
+    const onBack = () => {
+        navigation.goBack()
     }
 
     const checkChanged = () => {
@@ -20,36 +25,37 @@ const Signup = () => {
       }
 
         return (
-        <View style={styles.container}>
-            <AuthHeader title="Sign up" onBackPressed={function () {
-            }} />
-            
-            <Input isPassword={false} label="Name" placeholder="John Doe" />
+            <SafeAreaView>
+                <View style={styles.container}>
+                    <AuthHeader title="Sign up" onBackPressed={onBack} />
 
-            <Input isPassword={false} label="Email" placeholder="example@gmail.com" />
+                    <Input isPassword={false} label="Name" placeholder="John Doe" />
 
-            <Input isPassword={true} label="Password" placeholder="**********" />
+                    <Input isPassword={false} label="Email" placeholder="example@gmail.com" />
 
-            <View style={styles.termsRow}>
-                <Checkbox checked={checked} onCheck={checkChanged}/>
-                <Text style={styles.termsAgreeStyle}>I agree with <Text style={styles.termsText}>Terms & Privacy</Text></Text>
-            </View>
+                    <Input isPassword={true} label="Password" placeholder="**********" />
 
-            <Button style={styles.button} title = "Sign Up" onPress={function() {
+                    <View style={styles.termsRow}>
+                        <Checkbox checked={checked} onCheck={checkChanged} />
+                        <Text style={styles.termsAgreeStyle}>I agree with <Text style={styles.termsText}>Terms & Privacy</Text></Text>
+                    </View>
 
-            }}/>
+                    <Button style={styles.button} title="Sign Up" onPress={function () {
 
-            <Separator title= "Or sign up with"/>   
+                    }} />
 
-            <Googlelogin onPress={function() {
+                    <Separator title="Or sign up with" />
 
-            }}/> 
+                    <Googlelogin onPress={function () {
 
-            <Text style={styles.footerText}>
-            Already have an account? <Text style={styles.footerLink} onPress={onSignIn}>Sign In</Text>
-            </Text>
+                    }} />
 
-        </View>
+                    <Text style={styles.footerText}>
+                        Already have an account? <Text style={styles.footerLink} onPress={onSignIn}>Sign In</Text>
+                    </Text>
+                </View >
+            </SafeAreaView>
+   
     )
 
 }

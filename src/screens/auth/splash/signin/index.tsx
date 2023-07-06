@@ -7,41 +7,44 @@ import Checkbox from "../../../../components/Checkbox";
 import Button from "../../../../components/Buttons";
 import Separator from "../../../../components/Separator";
 import Googlelogin from "../../../../components/Googlelogin";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-const SignIn = () => {
+const SignIn = ({navigation}) => {
 
 
     const onSignUp = () => {
-        console.log("sign up clicked");
+        navigation.navigate("SingUp")
+    }
 
+    const onBack = () => {
+        navigation.goBack()
     }
 
     return (
-        <View style={styles.container}>
-            <AuthHeader title="Sign In" onBackPressed={function () {
-            }} />
+        <SafeAreaView>
+            <View style={styles.container}>
+                <AuthHeader title="Sign In" onBackPressed={onBack} />
 
+                <Input isPassword={false} label="Email" placeholder="example@gmail.com" />
 
-            <Input isPassword={false} label="Email" placeholder="example@gmail.com" />
+                <Input isPassword={true} label="Password" placeholder="**********" />
 
-            <Input isPassword={true} label="Password" placeholder="**********" />
+                <Button style={styles.button} title="Sign In" onPress={function () {
 
+                }} />
 
-            <Button style={styles.button} title="Sign In" onPress={function () {
+                <Separator title="or sign in with" />
 
-            }} />
+                <Googlelogin onPress={function () {
 
-            <Separator title="or sign in with" />
+                }} />
 
-            <Googlelogin onPress={function () {
+                <Text style={styles.footerText}>
+                    Don’t have an account? <Text style={styles.footerLink} onPress={onSignUp}>Sign Up </Text>
+                </Text>
 
-            }} />
-
-            <Text style={styles.footerText}>
-                Don’t have an account? <Text style={styles.footerLink} onPress={onSignUp}>Sign Up </Text>
-            </Text>
-
-        </View>
+            </View>
+        </SafeAreaView>
     )
 
 }

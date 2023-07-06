@@ -6,10 +6,6 @@
  */
 
 import React from 'react';
-import type { PropsWithChildren } from 'react';
-import {
-  View,
-} from 'react-native';
 import Splash from './src/screens/splash';
 import Signup from './src/screens/auth/splash/signup';
 import SignIn from './src/screens/auth/splash/signin';
@@ -17,9 +13,54 @@ import { NavigationContainer } from '@react-navigation/native';
 import colors from './src/utils/colors';
 import {createStackNavigator} from '@react-navigation/stack';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Home from './src/screens/home/home';
+import Favourites from './src/screens/profile/profile';
+import Profile from './src/screens/favourites/favourites';
+import { Image } from 'react-native';
 
 
+
+const isSignedIn = true
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator()
+
+const Tabs = () => {
+  return (
+    <Tab.Navigator screenOptions={({ route }) => ({
+      tabBarIcon: ({ focused, color, size }) => {
+        let icon;
+
+        if (route.name === 'Home') {
+          icon = focused
+            ? require('./src/assets/tabs/home_active.png')
+            : require('./src/assets/tabs/home.png');
+        } else if (route.name === 'Profile') {
+          icon = focused
+            ? require('./src/assets/tabs/profile_active.png')
+            : require('./src/assets/tabs/profile.png');
+        }
+        else if (route.name === 'Favourites') {
+          icon = focused
+            ? require('./src/assets/tabs/bookmark_active.png')
+            : require('./src/assets/tabs/bookmark.png');
+        }
+
+        // You can return any component that you like here!
+        return <Image style={{ width: 24, height: 24 }} source={icon} />;
+      },
+      headerShown: false,
+      tabBarInactiveTintColor: colors.black,
+      tabBarActiveTintColor: colors.blue,
+      tabBarStyle: {borderColor: colors.lightGrey}
+    })}>
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Favourites" component={Favourites} />
+      <Tab.Screen name="Profile" component={Profile} />
+    </Tab.Navigator>
+  );
+}
 
 function App(): JSX.Element {
 
@@ -36,13 +77,23 @@ function App(): JSX.Element {
   }
 
   return (
+    <SafeAreaProvider>
       <NavigationContainer theme={theme}>
         <Stack.Navigator>
-          <Stack.Screen name="Splash" component={Splash} />
-          <Stack.Screen name="SingUp" component={Signup} />
-          <Stack.Screen name="SignIn" component={SignIn} />
+          {isSignedIn ? (
+              <>
+              <Stack.Screen name='Tabs' component={Tabs} options={{headerShown: false}}/>
+              </>
+          ) : (
+            <>
+          <Stack.Screen name="Splash" component={Splash} options={{headerShown: false}} />
+          <Stack.Screen name="SingUp" component={Signup} options={{headerShown: false}} />
+          <Stack.Screen name="SignIn" component={SignIn} options={{headerShown: false}} />
+          </>
+        )}
         </Stack.Navigator>
       </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
 
