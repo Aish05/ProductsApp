@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { View, Text } from "react-native";
 import { styles } from "./styles";
-import AuthHeader from "../../../../components/AuthHeader";
-import Input from "../../../../components/Input";
-import Checkbox from "../../../../components/Checkbox";
-import Button from "../../../../components/Buttons";
-import Separator from "../../../../components/Separator";
-import Googlelogin from "../../../../components/Googlelogin";
+import AuthHeader from "../../../components/AuthHeader";
+import Input from "../../../components/Input";
+import Checkbox from "../../../components/Checkbox";
+import Button from "../../../components/Buttons";
+import Separator from "../../../components/Separator";
+import Googlelogin from "../../../components/Googlelogin";
 import { SafeAreaView } from "react-native-safe-area-context";
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import HomeStackParams from "../../../navigators/types/typeUtil"
 
-const Signup = ({navigation}) => {
+type SignUpProps = NativeStackScreenProps<HomeStackParams, 'SignUp'>
+
+const Signup = ({navigation}: SignUpProps) => {
     const [checked, setChecked] = useState(false)
 
     const onSignIn = () => {

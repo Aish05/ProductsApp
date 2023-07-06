@@ -6,9 +6,9 @@
  */
 
 import React from 'react';
-import Splash from './src/screens/splash';
-import Signup from './src/screens/auth/splash/signup';
-import SignIn from './src/screens/auth/splash/signin';
+import Splash from './src/screens/splash/splash';
+import Signup from './src/screens/auth/signup/signUp';
+import SignIn from './src/screens/auth/signin/signIn';
 import { NavigationContainer } from '@react-navigation/native';
 import colors from './src/utils/colors';
 import {createStackNavigator} from '@react-navigation/stack';
