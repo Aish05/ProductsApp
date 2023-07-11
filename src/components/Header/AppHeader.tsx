@@ -9,7 +9,9 @@ export interface IAppHeaderProps {
     showSearch?: boolean;
     showBack?: boolean;
     onLogout?: () => void;
-    onBackPressed?: () => void
+    onBackPressed?: () => void,
+    onSearch: () => void,
+    keyword: string
   }
 
 const AppHeader = ({
@@ -18,7 +20,9 @@ const AppHeader = ({
    showSearch,
    showBack,
    onLogout,
-   onBackPressed
+   onBackPressed,
+   onSearch,
+   keyword
   }: IAppHeaderProps) => {
 
     const [showSearchInput, setShowSearchInput] = useState(false)
@@ -27,7 +31,7 @@ const AppHeader = ({
     }
 
     return (  
-        <View>
+        <View style={styles.mainContainer}>
              <View style={styles.container}>
             {showBack ? (
                 <Pressable hitSlop={20} onPress={onBackPressed}>
@@ -50,7 +54,7 @@ const AppHeader = ({
                 : <View style={styles.space} />}
         </View>
             {showSearchInput? (
-                <Input placeholder="Search Products" label="" isPassword={false} />
+                <Input onChangeText={onSearch} value={keyword} placeholder="Search Products."  label="" isPassword={false}/>
             ) : null}
 
         </View>      

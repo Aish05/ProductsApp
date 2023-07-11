@@ -3,6 +3,9 @@ import colors from "../../utils/colors";
 const { StyleSheet } = require("react-native");
 
 const styles = StyleSheet.create({
+    mainContainer: {
+        paddingHorizontal: 16
+    },
     container: {
         flexDirection: "row",
         alignItems: "center",
