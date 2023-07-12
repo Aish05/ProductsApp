@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { FlatList } from 'react-native-gesture-handler';
 import { products } from '../../data/products';
 import FavouriteItem from '../../components/FavouriteItem/FavouriteItem';
+import AppHeader from '../../components/Header/AppHeader';
  
 const Favourites = () => {
     const renderFavs = ({item} : {item : any}) => {
@@ -14,13 +15,14 @@ const Favourites = () => {
     }
     return (
         <SafeAreaView>
-            <View style={styles.container}>
-                <FlatList
-                    data={products}
-                    renderItem={renderFavs}
-                    keyExtractor={(item) => String(item?.id)}
-                />
-            </View>
+
+            <AppHeader title="Favourites" />
+            <FlatList
+                data={products}
+                renderItem={renderFavs}
+                keyExtractor={(item) => String(item?.id)}
+            />
+
         </SafeAreaView>
     )
 }

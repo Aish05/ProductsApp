@@ -8,7 +8,12 @@ export const styles = StyleSheet.create({
 
     container: {
         margin: 4,
-        flexDirection: "row"
+        flexDirection: "row",
+        borderBottomWidth: 1,
+        borderBottomColor: colors.lightGrey,
+        marginVertical: 8,
+        marginHorizontal: 16,
+        paddingVertical: 8
     },
     content: {
         margin: 4,
