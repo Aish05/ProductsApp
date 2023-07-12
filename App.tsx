@@ -19,6 +19,7 @@ import Home from './src/screens/home/home';
 import { Image } from 'react-native';
 import Favourites from './src/screens/favourites/favourites';
 import Profile from './src/screens/profile/userprofile';
+import ProductDetails from './src/screens/product_details/ProductDetails';
 
 
 
@@ -83,6 +84,7 @@ function App(): JSX.Element {
           {isSignedIn ? (
               <>
               <Stack.Screen name='Tabs' component={Tabs} options={{headerShown: false}}/>
+              <Stack.Screen name="ProductDetails" component={ProductDetails} options={{ headerShown: false }} />
               </>
           ) : (
             <>

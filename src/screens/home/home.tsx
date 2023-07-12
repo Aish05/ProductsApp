@@ -8,9 +8,13 @@ import { categories } from '../../data/categories';
 import { products } from '../../data/products';
 import CategoryItem from '../../components/CategoryItem/CategoryItem';
 import ProductHome from '../../components/ProductHome/ProductHome';
+import HomeStackParams from '../../navigators/typeUtil'
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
- 
-const Home = () => {
+
+type HomeProps = NativeStackScreenProps<HomeStackParams, 'Home'>
+
+const Home = ({navigation}: HomeProps) => {
     const [selectedCategory, setSelectedCategory] = useState()
     const [filteredProduct, setFilteredProducts] = useState(products)
     const [keyword, setKeyword] = useState();
@@ -42,8 +46,11 @@ const Home = () => {
     }
 
     const renderProductItems =({ item, index} : { item: any, index: number})  => {
+        const onProductsClick = (product: any) =>{
+            navigation.navigate('ProductDetails',  {product})
+        }
         return (
-            <ProductHome {...item} />
+            <ProductHome {...item} onPress={() => onProductsClick(item)} />
         )
     }
 

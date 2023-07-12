@@ -9,9 +9,9 @@ import Separator from "../../../components/Separator";
 import Googlelogin from "../../../components/Googlelogin";
 import { SafeAreaView } from "react-native-safe-area-context";
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import HomeStackParams from "../../../navigators/types/typeUtil"
+import AuthStackParams from "../../../navigators/types/typeUtil"
 
-type SignUpProps = NativeStackScreenProps<HomeStackParams, 'SignUp'>
+type SignUpProps = NativeStackScreenProps<AuthStackParams, 'SignUp'>
 
 const Signup = ({navigation}: SignUpProps) => {
     const [checked, setChecked] = useState(false)

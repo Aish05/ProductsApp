@@ -1,5 +1,13 @@
-export type HomeStackParams = {
+import { products } from '../../data/products';
+
+
+export type AuthStackParams = {
     Splash: undefined
     SingUp: undefined
     SignIn: undefined
+}
+
+export type HomeStackParams = {
+    Home: undefined,
+    productDetails: object
 }

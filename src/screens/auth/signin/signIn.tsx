@@ -9,9 +9,9 @@ import Separator from "../../../components/Separator";
 import Googlelogin from "../../../components/Googlelogin";
 import { SafeAreaView } from "react-native-safe-area-context";
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import HomeStackParams from "../../../navigators/types/typeUtil"
+import AuthStackParams from "../../../navigators/types/typeUtil"
 
-type SignInProps = NativeStackScreenProps<HomeStackParams, 'SignIn'>
+type SignInProps = NativeStackScreenProps<AuthStackParams, 'SignIn'>
 
 const SignIn = ({navigation}: SignInProps) => {
 

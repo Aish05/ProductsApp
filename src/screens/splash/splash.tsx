@@ -3,10 +3,10 @@ import { Image, Pressable, Text, View } from "react-native";
 import { styles } from "./styles";
 import Button from "../../components/Buttons";
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import HomeStackParams from "../../../src/navigators/types/typeUtil"
+import AuthStackParams from "../../../src/navigators/types/typeUtil"
 
 
-type SplashProps = NativeStackScreenProps<HomeStackParams, 'Splash'>
+type SplashProps = NativeStackScreenProps<AuthStackParams, 'Splash'>
 
 const Splash = ({navigation} :SplashProps ) => {
     console.log("navigation: ", navigation)
