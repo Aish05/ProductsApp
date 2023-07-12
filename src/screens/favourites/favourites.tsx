@@ -6,11 +6,20 @@ import { FlatList } from 'react-native-gesture-handler';
 import { products } from '../../data/products';
 import FavouriteItem from '../../components/FavouriteItem/FavouriteItem';
 import AppHeader from '../../components/Header/AppHeader';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import HomeStackParams from '../../navigators/typeUtil'
  
-const Favourites = () => {
+type HomeProps = NativeStackScreenProps<HomeStackParams, 'Favourites'>
+
+const Favourites = ({navigation}: HomeProps) => {
     const renderFavs = ({item} : {item : any}) => {
+        
+        const onProductPress = () => {
+            navigation.navigate('ProductDetails', { product: item })
+        }
+
         return(
-            <FavouriteItem {...item}/>
+            <FavouriteItem {...item} onPress={onProductPress}/>
         )
     }
     return (

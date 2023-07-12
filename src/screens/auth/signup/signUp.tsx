@@ -44,9 +44,11 @@ const Signup = ({navigation}: SignUpProps) => {
                         <Text style={styles.termsAgreeStyle}>I agree with <Text style={styles.termsText}>Terms & Privacy</Text></Text>
                     </View>
 
+                    <View style={{width: '100%', flexDirection: "row" }}>
                     <Button style={styles.button} title="Sign Up" onPress={function () {
 
                     }} />
+                    </View>
 
                     <Separator title="Or sign up with" />
 

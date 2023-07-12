@@ -33,9 +33,11 @@ const SignIn = ({navigation}: SignInProps) => {
 
                 <Input isPassword={true} label="Password" placeholder="**********" />
 
-                <Button style={styles.button} title="Sign In" onPress={function () {
+                <View style={{ width: '100%', flexDirection: "row" }}>
+                    <Button style={styles.button} title="Sign In" onPress={function () {
 
-                }} />
+                    }} />
+                </View>
 
                 <Separator title="or sign in with" />
 

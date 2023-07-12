@@ -25,7 +25,9 @@ const Splash = ({navigation} :SplashProps ) => {
                 <Text style={styles.title}>Here!</Text>
             </View>
 
-            <Button title="Sign up" onPress={signUp} style={undefined}/>
+                <View style={{width: '100%', flexDirection: "row" }}>
+                    <Button title="Sign up" onPress={signUp} style={undefined} />
+                </View>
             <Pressable hitSlop={20}>
                 <Text style={styles.footerText} onPress={signIn}>Sign In</Text>
             </Pressable>

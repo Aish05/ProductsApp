@@ -40,6 +40,7 @@ export const styles = StyleSheet.create({
         color: colors.textGrey,
         fontWeight: '300',
         marginVertical: 8,
+        lineHeight: 20
     },
     bookmarkContainer: {
         backgroundColor: colors.lightGrey,

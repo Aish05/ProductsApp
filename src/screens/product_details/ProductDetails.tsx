@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, Pressable, Linking, Button } from 'react-native';
+import { View, Text, Image, Pressable, Linking } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import HomeStackParams from '../../navigators/types/typeUtil'
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -7,6 +7,7 @@ import AppHeader from '../../components/Header/AppHeader';
 import { ScrollView } from 'react-native-gesture-handler';
 import { styles } from "./styles"
 import ImageCarousel from '../../components/ImageCarousel/ImageCarousel';
+import Button from '../../components/Buttons';
 
 type HomeProps = NativeStackScreenProps<HomeStackParams, 'ProductDetails'>
 
