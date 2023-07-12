@@ -7,7 +7,7 @@ const Profile = () => {
     return (
         <SafeAreaView>
             <ScrollView style={styles.container}>
-                <Text>Favorites</Text>
+                <Text>NA</Text>
             </ScrollView>
         </SafeAreaView>
     )

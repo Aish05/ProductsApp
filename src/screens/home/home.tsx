@@ -49,7 +49,7 @@ const Home = () => {
 
     return (
         <SafeAreaView>
-            <ScrollView style={styles.container}>
+            <View style={styles.container}>
                 <AppHeader title="Find All You Need" showSearch onSearch={setKeyword} keyword={keyword} />
                 <FlatList
                     style={styles.list}
@@ -67,7 +67,7 @@ const Home = () => {
                     keyExtractor={(item) => String(item.id)} 
                     ListFooterComponent={<View style={{height: 200}} />} />
 
-            </ScrollView>
+            </View>
         </SafeAreaView>
     )
 }

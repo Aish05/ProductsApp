@@ -16,9 +16,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './src/screens/home/home';
-import Favourites from './src/screens/profile/profile';
-import Profile from './src/screens/favourites/favourites';
 import { Image } from 'react-native';
+import Favourites from './src/screens/favourites/favourites';
+import Profile from './src/screens/profile/userprofile';
 
 
 
