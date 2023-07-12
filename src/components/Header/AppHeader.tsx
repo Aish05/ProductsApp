@@ -10,8 +10,8 @@ export interface IAppHeaderProps {
     showBack?: boolean;
     onLogout?: () => void;
     onBackPressed?: () => void,
-    onSearch: () => void,
-    keyword: string
+    onSearch?: () => void,
+    keyword?: string
   }
 
 const AppHeader = ({
