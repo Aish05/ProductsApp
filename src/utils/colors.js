@@ -6,7 +6,8 @@ export const colors = {
     grey: '#8D9BB5',
     lightGrey: '#DADADA',
     darkGrey: '#3F4A59',
-    textGrey: '#606060'
+    textGrey: '#606060',
+    textLightGrey: '#808080'
 }
 
 export default colors

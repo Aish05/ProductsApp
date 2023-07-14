@@ -11,3 +11,10 @@ export type HomeStackParams = {
     Home: undefined,
     productDetails: object
 }
+
+export type ProfileStackParams = {
+    Profile: undefined
+    Settings: undefined
+    NewListing: undefined
+    MyListing: undefined
+}

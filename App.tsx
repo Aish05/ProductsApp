@@ -20,12 +20,20 @@ import { Image } from 'react-native';
 import Favourites from './src/screens/favourites/favourites';
 import Profile from './src/screens/profile/userprofile';
 import ProductDetails from './src/screens/product_details/ProductDetails';
-
-
+import Settings from './src/screens/settings/settings';
 
 const isSignedIn = true
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator()
+
+const ProfileStack = () => {
+  return(
+    <Stack.Navigator>
+      <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
+      <Stack.Screen name="Settings" component={Settings} options={{ headerShown: false }} />
+    </Stack.Navigator>
+  )
+}
 
 const Tabs = () => {
   return (
@@ -37,7 +45,7 @@ const Tabs = () => {
           icon = focused
             ? require('./src/assets/tabs/home_active.png')
             : require('./src/assets/tabs/home.png');
-        } else if (route.name === 'Profile') {
+        } else if (route.name === 'ProfileStack') {
           icon = focused
             ? require('./src/assets/tabs/profile_active.png')
             : require('./src/assets/tabs/profile.png');
@@ -58,7 +66,7 @@ const Tabs = () => {
     })}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Favourites" component={Favourites} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="ProfileStack" component={ProfileStack} />
     </Tab.Navigator>
   );
 }

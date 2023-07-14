@@ -19,4 +19,21 @@ export const styles = StyleSheet.create({
     content: {
       flex: 1,
   },
+  sectionHeader: {
+    color: colors.textGrey,
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  personalContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between"
+    },
+  editIcon: {
+    height: 24,
+    width: 24
+  },
+  button: {
+    paddingVertical: 12,
+    marginTop: 32
+  }
 })
