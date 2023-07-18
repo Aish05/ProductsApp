@@ -1,32 +1,76 @@
-import { TextInput, View, Text, Pressable, Image } from "react-native"
-import styles from "./styles"
-import { useState } from "react"
+import React, { useState } from 'react';
+import { Pressable, Text, TextInput, View, Image, Modal, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import styles from './styles';
 
-const Input = ({ label, placeholder, isPassword, onChangeText , value}: { label: string, placeholder: string, isPassword: boolean, onChangeText: () => void, value: string }) => {
+type Props = React.ComponentProps<typeof TextInput> & {
+    label?: string,
+    placeholder: string,
+    type: string,
+    options: string,
+    isPassword?: boolean,
+    value: string,
+    onChangeText: () => void,
+};
 
-    const [isPasswordVisible, setPasswordVisible] = useState(false)
-    const onEyeToggle = () => {
-            setPasswordVisible(!isPasswordVisible)
+const Input = ({ label, type, options, isPassword, value, onChangeText, placeholder, style, ...props }: Props) => {
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const [isPickerModalVisible, setPickerModalVisible] = useState(false);
+
+    const onEyePress = () => {
+        setIsPasswordVisible(!isPasswordVisible);
+    }
+
+    const onSelect = (opt: string) => {
+        onChangeText(opt);
+        setPickerModalVisible(false);
     }
 
     return (
         <View style={styles.container}>
             <Text style={styles.label}>{label}</Text>
-            <View style={styles.inputContainer}>
-                <TextInput value={value} placeholder={placeholder} style={styles.input} onChangeText={onChangeText}  secureTextEntry={isPassword && !isPasswordVisible} />
+            {type === 'picker' ? (
+                <Pressable onPress={() => setPickerModalVisible(true)} style={styles.inputContainer}>
+                    {value ? (
+                        <Text style={[styles.input, style]}>{value?.title}</Text>
+                    ) : (
+                        <Text style={[styles.placeholder, style]}>{placeholder}</Text>
+                    )}
 
-                
-                {(isPassword ? 
-                    <Pressable onPress={onEyeToggle}>
-                        <Image style={styles.eye} source={isPasswordVisible ? require('../../assets/eye.png') : require('../../assets/eye_closed.png')}/>
-                    </Pressable>
-                 : null)
-                }
+                    <Image style={styles.arrow} source={require('../../assets/go.png')} />
+                </Pressable>
+            ) : (
+                <View style={styles.inputContainer}>
+                    <TextInput placeholder={placeholder} value={value} onChangeText={onChangeText} secureTextEntry={isPassword && !isPasswordVisible} style={[styles.input, style]} {...props} />
 
-            </View>
+                    {isPassword ? (
+                        <Pressable onPress={onEyePress}>
+                            <Image style={styles.eye} source={isPasswordVisible ? require('../../assets/eye.png') : require('../../assets/eye_closed.png')} />
+                        </Pressable>
+                    ) : null}
+                </View>
+            )}
+
+            <Modal transparent visible={isPickerModalVisible}>
+                <TouchableOpacity activeOpacity={1} onPress={() => setPickerModalVisible(false)} style={styles.modalWrapper}>
+                    <TouchableOpacity activeOpacity={1} style={styles.modalContent}>
+                        <Text style={styles.headerTitle}>Select options</Text>
+
+                        {options?.map(opt => {
+                            if (!opt?.id) {
+                                return null;
+                            }
+
+                            const selected = value?.id === opt?.id;
+
+                            return (
+                                <Text onPress={() => onSelect(opt)} style={[styles.optionText, selected ? styles.selectedOption : {}]} key={opt?.title}>{opt?.title}</Text>
+                            )
+                        })}
+                    </TouchableOpacity>
+                </TouchableOpacity>
+            </Modal>
         </View>
-
     )
 }
 
-export default Input
+export default React.memo(Input);

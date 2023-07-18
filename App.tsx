@@ -21,6 +21,9 @@ import Favourites from './src/screens/favourites/favourites';
 import Profile from './src/screens/profile/userprofile';
 import ProductDetails from './src/screens/product_details/ProductDetails';
 import Settings from './src/screens/settings/settings';
+import CreateListing from './src/screens/create_listing/CreateListing';
+import myListing from './src/screens/myListing/MyListings';
+import MyListings from './src/screens/myListing/MyListings';
 
 const isSignedIn = true
 const Stack = createStackNavigator();
@@ -31,6 +34,8 @@ const ProfileStack = () => {
     <Stack.Navigator>
       <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
       <Stack.Screen name="Settings" component={Settings} options={{ headerShown: false }} />
+      <Stack.Screen name="CreateListing" component={CreateListing} options={{ headerShown: false }} />
+      <Stack.Screen name="MyListing" component={MyListings} options={{ headerShown: false }} />
     </Stack.Navigator>
   )
 }

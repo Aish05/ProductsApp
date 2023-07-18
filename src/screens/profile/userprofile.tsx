@@ -21,6 +21,10 @@ const Profile = ({ navigation }: ProfileProps) => {
         navigation.navigate('Settings')
     }
 
+    const onMyListingsClicked = () => {
+        navigation.navigate('MyListing')
+    }
+ 
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <AppHeader title="Profile" onLogout={onLogout} showLogout />
@@ -28,10 +32,12 @@ const Profile = ({ navigation }: ProfileProps) => {
                 <View style={styles.content}>
                     <Text style={styles.name}>User name</Text>
                     <Text style={styles.email}>User Email</Text>
-                    <ProfileListItem title="My Listings" subtitle={`Already have ${num} listing`} />
+                    <ProfileListItem title="My Listings" subtitle={`Already have ${num} listing`} onPress={onMyListingsClicked} />
                     <ProfileListItem onPress={onSettingsClicked} title="Settings" subtitle="Account, FAQ, Contact" />
                 </View>
-                <Button style={{ flex: 0 }} title="Add a new listing" onPress={() => { }} />
+                <Button style={{ flex: 0 }} title="Add a new listing" onPress={() => { 
+                    navigation.navigate('CreateListing')
+                }} />
             </View>
         </SafeAreaView>
     )

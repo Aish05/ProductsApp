@@ -39,9 +39,9 @@ const Settings = ({ navigation }: ProfileProps) => {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <AppHeader title="Profile" />
+            <AppHeader showBack onBackPressed={goBack} title="Settings" />
             <ScrollView style={styles.container}>
-                <View style={styles.personalContainer}>
+                <View style={styles.personalContainer}> 
                     <Text style={styles.sectionHeader}>Personal Information:</Text>
                     <Pressable onPress={onEditPress}>
                         <Image style={styles.editIcon} source={require('../../assets/edit.png')} />
