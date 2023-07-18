@@ -16,4 +16,4 @@ const FavItem = ({ title, price, image, onPress }: { title: string, price: numbe
         )
 }
 
-            export default React.memo(FavItem);
+export default React.memo(FavItem);
