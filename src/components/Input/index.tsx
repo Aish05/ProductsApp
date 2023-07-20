@@ -5,11 +5,11 @@ import styles from './styles';
 type Props = React.ComponentProps<typeof TextInput> & {
     label?: string,
     placeholder: string,
-    type: string,
-    options: string,
+    type?: string,
+    options?: string,
     isPassword?: boolean,
     value: string,
-    onChangeText: () => void,
+    onChangeText: (text: string) => void,
 };
 
 const Input = ({ label, type, options, isPassword, value, onChangeText, placeholder, style, ...props }: Props) => {

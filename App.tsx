@@ -25,7 +25,7 @@ import CreateListing from './src/screens/create_listing/CreateListing';
 import myListing from './src/screens/myListing/MyListings';
 import MyListings from './src/screens/myListing/MyListings';
 
-const isSignedIn = true
+const isSignedIn = false
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator()
 
@@ -81,7 +81,7 @@ function App(): JSX.Element {
   const theme = {
     dark: false,
     colors: {
-      primary: colors.white,
+      primary: colors.black,
       background: colors.white,
       card: 'rgb(255, 255, 255)',
       text: colors.black,
