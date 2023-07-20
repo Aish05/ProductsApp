@@ -1,14 +1,19 @@
-import React, { PropsWithRef } from "react";
+import React, { PropsWithRef, useContext } from "react";
 import { Image, Pressable, Text, View } from "react-native";
 import { styles } from "./styles";
 import Button from "../../components/Buttons";
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import AuthStackParams from "../../../src/navigators/types/typeUtil"
+import { UserContext, UserContextType } from "../../../UserContext";
 
 
 type SplashProps = NativeStackScreenProps<AuthStackParams, 'Splash'>
 
 const Splash = ({navigation} :SplashProps ) => {
+    
+    const { user, setUser } = useContext<UserContextType>(UserContext);
+    console.log(user)
+
     console.log("navigation: ", navigation)
     const signUp = () => {
         navigation.navigate("SingUp")

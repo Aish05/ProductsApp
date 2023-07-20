@@ -36,7 +36,7 @@ const Signup = ({ navigation }: SignUpProps) => {
     const checkChanged = () => {
         setChecked(prevChecked => !prevChecked);
     }
-    const onSubmit = () => {
+    const onSubmit = async () => {
         let url = "https://listicle.deegeehub.com/api/user/register"
         // axios.post(url, {
         //     fullName: 'Aish', email: 'Flintstone@gmail.com', password: 'Test!23', confirmPassword:'Test!23'
@@ -51,7 +51,7 @@ const Signup = ({ navigation }: SignUpProps) => {
                 Alert.alert('All fields are required');
                 return;
             }
-            request({
+            const response = await request({
                 url: url,
                 method: 'post',
                 data: values

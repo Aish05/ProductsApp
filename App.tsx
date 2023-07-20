@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { Dispatch, SetStateAction, createContext, useState } from 'react';
 import Splash from './src/screens/splash/splash';
 import Signup from './src/screens/auth/signup/signUp';
 import SignIn from './src/screens/auth/signin/signIn';
@@ -24,10 +24,12 @@ import Settings from './src/screens/settings/settings';
 import CreateListing from './src/screens/create_listing/CreateListing';
 import myListing from './src/screens/myListing/MyListings';
 import MyListings from './src/screens/myListing/MyListings';
+import { User, UserContext } from './UserContext';
 
 const isSignedIn = false
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator()
+
 
 const ProfileStack = () => {
   return(
@@ -76,7 +78,11 @@ const Tabs = () => {
   );
 }
 
+
 function App(): JSX.Element {
+
+  const [user, setUser] = useState<User | null>(null);
+
 
   const theme = {
     dark: false,
@@ -92,6 +98,7 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaProvider>
+      <UserContext.Provider value={{ user, setUser }}>
       <NavigationContainer theme={theme}>
         <Stack.Navigator>
           {isSignedIn ? (
@@ -108,6 +115,7 @@ function App(): JSX.Element {
         )}
         </Stack.Navigator>
       </NavigationContainer>
+      </UserContext.Provider>
     </SafeAreaProvider>
   );
 }
